@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Calendar-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="EACalendar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" userLabel="Calendar" customClass="ViewController" customModule="EACalendar" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -21,16 +21,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wgJ-Wl-PAs">
-                                <rect key="frame" x="0.0" y="380" width="414" height="356"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wgJ-Wl-PAs">
+                                <rect key="frame" x="0.0" y="328" width="414" height="408"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="414" id="7jH-Wo-CeI"/>
+                                    <constraint firstAttribute="height" constant="408" id="WN5-2V-M3E"/>
+                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="L4r-Sg-8Vz" userLabel="cell">
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="L4r-Sg-8Vz" id="bfx-dW-UeV">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="L4r-Sg-8Vz" id="bfx-dW-UeV" userLabel="cell">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pt6-97-EC9">
@@ -52,10 +55,32 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wsb-NF-aq5" userLabel="calendar" customClass="FSCalendar">
+                                <rect key="frame" x="0.0" y="20" width="400" height="300"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="VIz-Xr-KpX"/>
+                                    <constraint firstAttribute="width" constant="400" id="YkV-BO-HTp"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="z3m-k0-MpH"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="389-2c-Eeq"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="wgJ-Wl-PAs" firstAttribute="top" secondItem="Wsb-NF-aq5" secondAttribute="bottom" constant="8" id="29f-Wx-pQA"/>
+                            <constraint firstItem="Wsb-NF-aq5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="2ZQ-SG-e0U"/>
+                            <constraint firstItem="Wsb-NF-aq5" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="36b-5w-9TH"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="wgJ-Wl-PAs" secondAttribute="bottom" id="Oyf-mJ-4bl"/>
+                            <constraint firstItem="wgJ-Wl-PAs" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="nZM-fk-p6o"/>
+                            <constraint firstAttribute="trailing" secondItem="wgJ-Wl-PAs" secondAttribute="trailing" id="qcQ-Nw-Kh7"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="calendar" destination="Wsb-NF-aq5" id="bZp-WZ-5Ra"/>
+                        <outlet property="calendarHeightContraint" destination="VIz-Xr-KpX" id="Vrj-nL-aTr"/>
                         <outlet property="tableView" destination="wgJ-Wl-PAs" id="oR9-Fo-1KC"/>
                     </connections>
                 </viewController>
@@ -93,24 +118,11 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="46A-g1-IUd">
-                                <rect key="frame" x="330" y="648" width="68" height="68"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="26"/>
-                                <state key="normal" title="X">
-                                    <color key="titleColor" red="1" green="0.3411764706" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="dismissSecondVC:" destination="ZNw-WU-Gmx" eventType="touchUpInside" id="y4R-V2-Qtm"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.3411764706" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
                         <outlet property="addEventView" destination="1HF-bf-J06" id="Fqb-RW-RA6"/>
-                        <outlet property="cancelEvent" destination="46A-g1-IUd" id="hBb-r2-0Vb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Ct-5z-gdN" userLabel="First Responder" sceneMemberID="firstResponder"/>

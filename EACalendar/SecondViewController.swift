@@ -22,7 +22,8 @@ class SecondViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        cancelEvent.layer.cornerRadius = cancelEvent.frame.size.width / 2
+        //cancelEvent.layer.cornerRadius = cancelEvent.frame.size.width / 2
+        
         addEventView.layer.cornerRadius = 5
     }
     /*
