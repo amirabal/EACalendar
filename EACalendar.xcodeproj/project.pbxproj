@@ -15,8 +15,7 @@
 		433D13B91E894FA200607885 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 433D13B71E894FA200607885 /* LaunchScreen.storyboard */; };
 		433D13C41E894FA200607885 /* EACalendarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433D13C31E894FA200607885 /* EACalendarTests.swift */; };
 		433D13CF1E894FA300607885 /* EACalendarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433D13CE1E894FA300607885 /* EACalendarUITests.swift */; };
-		434B40B11E8D5249005C2919 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434B40B01E8D5249005C2919 /* SecondViewController.swift */; };
-		434B40B31E8D5746005C2919 /* CircularTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434B40B21E8D5746005C2919 /* CircularTransition.swift */; };
+		4364FFDC1E9179180074ACBD /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4364FFDB1E9179180074ACBD /* EventTableViewCell.swift */; };
 		4B1D30E8097184A2E493E487 /* Pods_EACalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C93943C69E7F545C82C74D8 /* Pods_EACalendar.framework */; };
 		4D5364DA83F84B9B3D8F0F3E /* Pods_EACalendarUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6822ADEDF328C98C04A43EC /* Pods_EACalendarUITests.framework */; };
 		79CB7A93957524605B1B0EE0 /* Pods_EACalendarTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B93987C063CBE1A8DC248826 /* Pods_EACalendarTests.framework */; };
@@ -57,8 +56,7 @@
 		433D13CA1E894FA300607885 /* EACalendarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EACalendarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		433D13CE1E894FA300607885 /* EACalendarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EACalendarUITests.swift; sourceTree = "<group>"; };
 		433D13D01E894FA300607885 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		434B40B01E8D5249005C2919 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
-		434B40B21E8D5746005C2919 /* CircularTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularTransition.swift; sourceTree = "<group>"; };
+		4364FFDB1E9179180074ACBD /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		4881B729C021AB12BD75E37A /* Pods-EACalendarUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EACalendarUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EACalendarUITests/Pods-EACalendarUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		97038677FDC91D66DACDE40E /* Pods-EACalendar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EACalendar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EACalendar/Pods-EACalendar.debug.xcconfig"; sourceTree = "<group>"; };
 		B93987C063CBE1A8DC248826 /* Pods_EACalendarTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EACalendarTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,8 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				433D13AB1E894FA200607885 /* AppDelegate.swift */,
-				434B40B21E8D5746005C2919 /* CircularTransition.swift */,
-				434B40B01E8D5249005C2919 /* SecondViewController.swift */,
+				4364FFDB1E9179180074ACBD /* EventTableViewCell.swift */,
 				433D13AD1E894FA200607885 /* ViewController.swift */,
 				433D13AF1E894FA200607885 /* Main.storyboard */,
 				433D13B51E894FA200607885 /* Assets.xcassets */,
@@ -458,8 +455,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				434B40B31E8D5746005C2919 /* CircularTransition.swift in Sources */,
-				434B40B11E8D5249005C2919 /* SecondViewController.swift in Sources */,
+				4364FFDC1E9179180074ACBD /* EventTableViewCell.swift in Sources */,
 				433D13AE1E894FA200607885 /* ViewController.swift in Sources */,
 				433D13AC1E894FA200607885 /* AppDelegate.swift in Sources */,
 				433D13B41E894FA200607885 /* EACalendar.xcdatamodeld in Sources */,

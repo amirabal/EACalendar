@@ -10,21 +10,22 @@ import UIKit
 
 class SecondViewController: UIViewController {
 
+    @IBOutlet weak var Test: UILabel!
     
     
     
-    @IBOutlet weak var cancelEvent: UIButton!
+    
     
    
-    @IBOutlet weak var addEventView: UIView!
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //cancelEvent.layer.cornerRadius = cancelEvent.frame.size.width / 2
+       
         
-        addEventView.layer.cornerRadius = 5
+        
     }
     /*
     
@@ -44,17 +45,7 @@ class SecondViewController: UIViewController {
  **/
  
  
- 
-    @IBAction func donePopUp(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func dismissSecondVC(_ sender: AnyObject) {
-        
-        self.dismiss(animated: true, completion: nil)
-        
-    }
-    
+     
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
