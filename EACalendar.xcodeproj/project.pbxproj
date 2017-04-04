@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		43049EB21E92028700B6EA95 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43049EB11E92028700B6EA95 /* AddViewController.swift */; };
 		433D13AC1E894FA200607885 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433D13AB1E894FA200607885 /* AppDelegate.swift */; };
 		433D13AE1E894FA200607885 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433D13AD1E894FA200607885 /* ViewController.swift */; };
 		433D13B11E894FA200607885 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 433D13AF1E894FA200607885 /* Main.storyboard */; };
@@ -42,6 +43,7 @@
 		0C93943C69E7F545C82C74D8 /* Pods_EACalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EACalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		22097C50D9CFFCE0478E1EF1 /* Pods-EACalendar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EACalendar.release.xcconfig"; path = "Pods/Target Support Files/Pods-EACalendar/Pods-EACalendar.release.xcconfig"; sourceTree = "<group>"; };
 		27FDAD86B0B288C4CD62FC35 /* Pods-EACalendarUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EACalendarUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-EACalendarUITests/Pods-EACalendarUITests.release.xcconfig"; sourceTree = "<group>"; };
+		43049EB11E92028700B6EA95 /* AddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		433D13A81E894FA200607885 /* EACalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EACalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		433D13AB1E894FA200607885 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		433D13AD1E894FA200607885 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 			children = (
 				433D13AB1E894FA200607885 /* AppDelegate.swift */,
 				4364FFDB1E9179180074ACBD /* EventTableViewCell.swift */,
+				43049EB11E92028700B6EA95 /* AddViewController.swift */,
 				433D13AD1E894FA200607885 /* ViewController.swift */,
 				433D13AF1E894FA200607885 /* Main.storyboard */,
 				433D13B51E894FA200607885 /* Assets.xcassets */,
@@ -455,6 +458,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43049EB21E92028700B6EA95 /* AddViewController.swift in Sources */,
 				4364FFDC1E9179180074ACBD /* EventTableViewCell.swift in Sources */,
 				433D13AE1E894FA200607885 /* ViewController.swift in Sources */,
 				433D13AC1E894FA200607885 /* AppDelegate.swift in Sources */,

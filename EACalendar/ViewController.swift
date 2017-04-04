@@ -29,31 +29,17 @@ class ViewController: UIViewController, KCFloatingActionButtonDelegate, FSCalend
         
         self.calendar.setCurrentPage(Date(), animated: true)
         
-        /**
-        let min = Date()
-        let picker = DateTimePicker.show(minimumDate: min)
-        picker.highlightColor = UIColor(red: 231/255, green: 76/255, blue: 60/255, alpha: 1)
-        picker.doneButtonTitle = " DONE "
-        picker.todayButtonTitle = "Today"
-        picker.is12HourFormat = true
-        picker.dateFormat = "hh:mm aa MM/dd/YYYY"
-        picker.isDatePickerOnly = false
-        picker.completionHandler = { date in
-            let formatter = DateFormatter()
-            formatter.dateFormat = "hh:mm aa dd/MM/YYYY"
-            self.calendar.select(date, scrollToDate: true)
-        }
-       **/
+    }
+     
+    @IBAction func unwind(for unwindSegue: UIStoryboardSegue) {
         
     }
-    
-    
  
     
     fileprivate lazy var dateFormatter: DateFormatter = {
-        let format = DateFormatter()
-        format.dateFormat = "yyyy-MM-dd"
-        return format
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd"
+        return formatter
     }()
 
     private lazy var gesture: UIPanGestureRecognizer = {
@@ -78,10 +64,10 @@ class ViewController: UIViewController, KCFloatingActionButtonDelegate, FSCalend
         layoutFAB()
     }
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIApplication.shared.setStatusBarHidden(true, with: .none)
+        UIApplication.shared.setStatusBarHidden(false, with: .none)
         
         if UIDevice.current.model.hasPrefix("iPad"){
             self.calendarHeightConstraint.constant = 400
