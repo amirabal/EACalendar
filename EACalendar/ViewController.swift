@@ -18,27 +18,20 @@ class ViewController: UIViewController, KCFloatingActionButtonDelegate, FSCalend
     
   //  @IBOutlet weak var addEventButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
-   
     @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var calendar: FSCalendar!
-
     @IBOutlet weak var background: UIView!
-    
     @IBAction func selectToday(_ sender: AnyObject?) {
         
         self.calendar.setCurrentPage(Date(), animated: true)
         
     }
-     
-    @IBAction func unwind(for unwindSegue: UIStoryboardSegue) {
-        
-    }
+    @IBAction func unwind(for unwindSegue: UIStoryboardSegue) {}
  
     
     fileprivate lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy/MM/dd"
+        formatter.dateFormat = "dd/MM/yyyy"
         return formatter
     }()
 
@@ -53,19 +46,133 @@ class ViewController: UIViewController, KCFloatingActionButtonDelegate, FSCalend
     
     
     var addEvent = KCFloatingActionButton()
-    
-    
-    var datesWithEvents = ["2017-04-11", "2017-04-14", "2017-04-30"]
-    var events = [["Time": "10", "event": "Birthday"],["Time": "11:30", "event": "Date Night"]]
-
-    
+    var events: [EKEvent]?
+    var calendars: EKCalendar!
     
     override func viewDidAppear(_ animated: Bool) {
         layoutFAB()
     }
     
+    //MARK-> Calendar events with EventKit
+    /**********************************************************************************************/
+    /**********************************************************************************************/
+    
+    override func viewWillAppear(_ animated: Bool) {
+        calendarAuthorizationStatus()
+    }
+    
+    func calendarAuthorizationStatus() {
+        let status = EKEventStore.authorizationStatus(for: EKEntityType.event)
+        
+        switch (status) {
+        case EKAuthorizationStatus.notDetermined:
+            // This happens on first-run
+            requestAccessToCalendar()
+        case EKAuthorizationStatus.authorized:
+            // Things are in line with being able to show the calendars in the table view
+            //loadCalendars()
+            refreshTableView()
+        case EKAuthorizationStatus.restricted, EKAuthorizationStatus.denied:
+            // We need to help them give us permission
+            let alert = UIAlertController(title: "Need Permisson", message: "PLease Give Access to Calendar", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+
+        }
+    }
+    
+    func requestAccessToCalendar(){
+        EKEventStore().requestAccess(to: .event, completion: {
+            (accessGranted: Bool, error: Error?) in
+            
+            if accessGranted == true {
+                DispatchQueue.main.async(execute: {
+                    self.calendar.reloadData()
+                    self.refreshTableView()
+                })
+            }
+            else {
+                DispatchQueue.main.async(execute: {
+                    let alert = UIAlertController(title: "Need Permisson", message: "PLease Give Access to Calendar", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                })
+            }
+        })
+    }
+    
+    
+    func refreshTableView() {
+        calendar.isHidden = false
+    }
+    /*
+    func loadEvents(){
+    /*
+       let gregorian = Calendar(identifier: .gregorian)
+       let todaysComp = gregorian.dateComponents([.day, .month, .year], from: Date())
+       let startOfDay = gregorian.date(from: todaysComp)!
+       var offsetComp = DateComponents()
+       offsetComp.day = 1
+    **/
+        let startDate = dateFormatter.date(from: "2017-01-01")
+        let endDate = dateFormatter.date(from: "2017-12-31")
+ 
+       //let endOfday = gregorian.date(byAdding: offsetComp as DateComponents, to: startOfDay)!
+       
+        if let startDate = startDate, let endDate = endDate {
+
+        let eventStore = EKEventStore()
+        let eventsPredicate = eventStore.predicateForEvents(withStart: startDate, end: endDate, calendars: [calendars])
+            self.events = eventStore.events(matching: eventsPredicate).sorted {
+                (e1: EKEvent, e2: EKEvent) in
+                
+                return e1.startDate.compare(e2.startDate) == ComparisonResult.orderedAscending
+            }
+        }
+        
+        
+        
+    }
+ 
+    **/
+    func fetchEventsFromCalendar(){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        
+        let startDate = dateFormatter.date(from: "2017-01-01")
+        let endDate = dateFormatter.date(from: "2017-12-31")
+        if let startDate = startDate, let endDate = endDate {
+            let eventStore = EKEventStore()
+            
+            let predicate = eventStore.predicateForEvents(withStart: startDate, end: endDate, calendars: [calendars])
+            
+            self.events = eventStore.events(matching: predicate).sorted(){
+                (e1: EKEvent, e2: EKEvent) -> Bool in
+                return e1.startDate.compare(e2.startDate) == ComparisonResult.orderedAscending
+            }
+        }
+    }
+    
+
+    /**********************************************************************************************/
+    /**********************************************************************************************/
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    /**********************************************************************************************/
+    /**********************************************************************************************/
+    //EventKit Events
+        
+        calendarAuthorizationStatus()
+        fetchEventsFromCalendar()
+    /**********************************************************************************************/
+    /**********************************************************************************************/
+
+        
+        
+        
         UIApplication.shared.setStatusBarHidden(true, with: .none)
         UIApplication.shared.setStatusBarHidden(false, with: .none)
         
@@ -112,6 +219,8 @@ class ViewController: UIViewController, KCFloatingActionButtonDelegate, FSCalend
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 140
+        
+        
         
     }
     deinit {
@@ -177,10 +286,11 @@ class ViewController: UIViewController, KCFloatingActionButtonDelegate, FSCalend
         }
         return 0
     }
-    
+    **/
+    /*
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventDefaultColorsFor date: Date) -> [UIColor]? {
         let key = self.dateFormatter.string(from: date)
-        if self.datesWithMultipleEvents.contains(key){
+        if self.events?.contains(date){
             return [UIColor.purple, UIColor.blue, UIColor.white]
         }
         if self.datesWithEvents.contains(key){
@@ -188,8 +298,8 @@ class ViewController: UIViewController, KCFloatingActionButtonDelegate, FSCalend
         }
         return nil
     }
-    
     **/
+    
     
     func KCFABOpened(_ fab: KCFloatingActionButton) {
         print("FAB Opened")
@@ -237,20 +347,35 @@ class ViewController: UIViewController, KCFloatingActionButtonDelegate, FSCalend
         print("\(self.dateFormatter.string(from: calendar.currentPage))")
     }
     
+    
     /***********************************************************************************************/
     //UITableViewDelegate
     
+    //EventKit Events Tables
+    /***********************************************************************************************/
+    /***********************************************************************************************/
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! EventTableViewCell
-        let eventsObj = events[indexPath.row]
-        
-        cell.time.text = eventsObj["Time"]
-        cell.event.text = eventsObj["event"]
+        cell.time?.text = events?[(indexPath as NSIndexPath).row].title
+        cell.eventLabel?.text = formatDate(events?[(indexPath as IndexPath).row].startDate)
         return cell
+    }
+    
+    
+    func formatDate(_ date: Date?) -> String{
+        if let date = date {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MM/dd/yyyy"
+            return dateFormatter.string(from: date)
+        }
+        
+        return ""
         
     }
     
+    /***********************************************************************************************/
+    /***********************************************************************************************/
     
     
     /*
@@ -264,7 +389,24 @@ class ViewController: UIViewController, KCFloatingActionButtonDelegate, FSCalend
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return events.count
+    /***********************************************************************************************/
+    /***********************************************************************************************/
+        //EventKit Events Count
+        
+        if let events = events {
+            return events.count
+        }
+        
+        return 0
+    
+    /***********************************************************************************************/
+    /***********************************************************************************************/
+    }
+    
+    // MARK: Event Added Delegate
+    func eventDidAdd() {
+     //   self.loadEvents()
+        self.calendar.reloadData()
     }
  
    

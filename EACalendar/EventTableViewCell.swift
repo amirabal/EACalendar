@@ -13,7 +13,7 @@ class EventTableViewCell: UITableViewCell {
     
     @IBOutlet weak var time: UILabel!
     
-    @IBOutlet weak var event: UILabel!
+    @IBOutlet weak var eventLabel: UILabel!
     
     @IBOutlet weak var borderLine: UIView!
     
