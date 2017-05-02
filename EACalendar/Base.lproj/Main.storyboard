@@ -111,8 +111,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="borderLine" destination="0cW-Eh-wJ0" id="hiC-Dw-W4x"/>
-                                            <outlet property="event" destination="ym8-PA-a2S" id="0Re-Vv-mCB"/>
+                                            <outlet property="borderline" destination="0cW-Eh-wJ0" id="Zji-dX-Vdn"/>
                                             <outlet property="eventLabel" destination="ym8-PA-a2S" id="2lX-Y1-mXU"/>
                                             <outlet property="time" destination="Pt6-97-EC9" id="HKx-no-ief"/>
                                         </connections>

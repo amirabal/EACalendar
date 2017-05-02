@@ -145,7 +145,7 @@ class ViewController: UIViewController, KCFloatingActionButtonDelegate, FSCalend
         if let startDate = startDate, let endDate = endDate {
             let eventStore = EKEventStore()
             
-            let predicate = eventStore.predicateForEvents(withStart: startDate, end: endDate, calendars: [calendars])
+            let predicate = eventStore.predicateForEvents(withStart: startDate, end: endDate, calendars: nil)
             
             self.events = eventStore.events(matching: predicate).sorted(){
                 (e1: EKEvent, e2: EKEvent) -> Bool in
@@ -357,8 +357,10 @@ class ViewController: UIViewController, KCFloatingActionButtonDelegate, FSCalend
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! EventTableViewCell
-        cell.time?.text = events?[(indexPath as NSIndexPath).row].title
-        cell.eventLabel?.text = formatDate(events?[(indexPath as IndexPath).row].startDate)
+        let event: EKEvent! = self.events![indexPath.row]
+        cell.time?.text = formatDate(events?[(indexPath as IndexPath).row].startDate)
+        cell.eventLabel?.text = event.title
+       
         return cell
     }
     
@@ -366,7 +368,7 @@ class ViewController: UIViewController, KCFloatingActionButtonDelegate, FSCalend
     func formatDate(_ date: Date?) -> String{
         if let date = date {
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "MM/dd/yyyy"
+            dateFormatter.dateFormat = "MM/dd"
             return dateFormatter.string(from: date)
         }
         

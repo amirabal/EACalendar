@@ -15,7 +15,8 @@ class EventTableViewCell: UITableViewCell {
     
     @IBOutlet weak var eventLabel: UILabel!
     
-    @IBOutlet weak var borderLine: UIView!
+    @IBOutlet weak var borderline: UIView!
+    
     
     
 
