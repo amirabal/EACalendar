@@ -1,0 +1,18 @@
+PODS:
+  - DateTimePicker (1.1.1)
+  - FSCalendar (2.7.4)
+  - KCFloatingActionButton (2.2.0)
+
+DEPENDENCIES:
+  - DateTimePicker
+  - FSCalendar
+  - KCFloatingActionButton
+
+SPEC CHECKSUMS:
+  DateTimePicker: 1905792f424b712258c1059165f86f9e82bdbf4a
+  FSCalendar: e95995a746acae531c4a7dd636b8393233125ec5
+  KCFloatingActionButton: 8c71fa25774e422c8d407f82b4b27809d0cd5233
+
+PODFILE CHECKSUM: 24c69734b4f23d5500f047ac3ad93f387cdd88ec
+
+COCOAPODS: 1.2.1.beta.1

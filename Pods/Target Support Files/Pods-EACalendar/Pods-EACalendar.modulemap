@@ -1,0 +1,6 @@
+framework module Pods_EACalendar {
+  umbrella header "Pods-EACalendar-umbrella.h"
+
+  export *
+  module * { export * }
+}
